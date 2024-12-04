@@ -1,0 +1,49 @@
+@model ShoppingCartV2.Models.PurchaseOrderWithDetails
+
+<h2>@Html.Raw(ViewBag.Message)</h2>
+<p></p>
+<style type="text/css">
+    .display-label {
+        font-size: 16px;
+        font-weight: bold;
+    }
+    .fielddiplay {
+        font-size: 16px;
+        font-weight: bold;
+        color: #0000ff;
+    }
+</style>
+
+<fieldset>
+    <legend>Fields</legend>
+
+    <div class="display-label">Order ID:</div>
+    <div class="fielddiplay">@Model.OrderID</div>
+    <p></p>
+    <div class="display-label">Customer ID:</div>
+    <div class="fielddiplay">
+        @Html.ActionLink(Model.CustomerID.ToString(), "CustomerDetails", new { id = Model.CustomerID })
+    </div>
+    <p></p>
+    <div class="display-label">Date:</div>
+    <div class="fielddiplay">@String.Format("{0:g}", Model.Date)</div>
+    <p></p>
+    <div class="display-label">SubTotal:</div>
+    <div class="fielddiplay">@String.Format("{0:C}", Model.SubTotal)</div>
+    <p></p>
+    <div class="display-label">Tax:</div>
+    <div class="fielddiplay">@String.Format("{0:C}", Model.Tax)</div>
+    <p></p>
+    <div class="display-label">Total:</div>
+    <div class="fielddiplay">@String.Format("{0:C}", Model.Total)</div>
+    <p></p>
+    @Html.Raw(Model.Details)
+
+</fieldset>
+
+<p>
+    <h3>
+        @Html.ActionLink("Back To Purchase Orders View", "Purchases") |
+        @Html.ActionLink("Back To Admin View", "Admin")
+    </h3>
+</p>

@@ -1,0 +1,35 @@
+@inherits WebViewPage<IEnumerable<ShoppingCartV2.Models.Intersection>>
+
+<h2>@Html.Raw(ViewBag.Message)</h2>
+
+<table>
+    <tr>
+        <td></td>
+        <td style="text-align: center; padding: 4px">
+            @Html.ActionLink("Product ID", "Intersections", new { sortOrder = ViewData["PIDSortParm"] }, new {style="text-decoration:none; font-weight: bold;"})
+        </td>
+        <td style="text-align: center; padding: 4px">
+            @Html.ActionLink("Option ID", "Intersections", new { sortOrder = ViewData["OIDSortParm"] }, new {style="text-decoration:none; font-weight: bold;"})
+        </td>
+    </tr>
+
+    @foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.ActionLink("Details", "IntersectionDetails", new { pid = item.ProductID, oid = item.OptionID }) |
+                @Html.ActionLink("Delete", "DeleteIntersection", new { pid = item.ProductID, oid = item.OptionID })
+            </td>
+            <td>
+                @item.ProductID
+            </td>
+            <td>
+                @item.OptionID
+            </td>
+        </tr>
+    }
+
+</table>
+
+<p>
+    <h3>@Html.ActionLink("Back To Admin View", "Admin")</h3>
+</p>

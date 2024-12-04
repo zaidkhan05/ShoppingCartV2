@@ -1,0 +1,84 @@
+@model ShoppingCartV2.Models.Customer
+
+<h3>@Html.Raw(ViewBag.Message)</h3>
+<p></p>
+@{ using (Html.BeginForm()) {
+    @Html.ValidationSummary(true);
+
+    <fieldset>
+        <legend>Fields</legend>
+
+        <div class="editor-label">
+            <b>First Name *</b>
+        </div>
+        <div class="editor-field">
+            @Html.TextBoxFor(model => model.FirstName)
+            @Html.ValidationMessageFor(model => model.FirstName)
+        </div>
+
+        <div class="editor-label">
+            <b>Last Name *</b>
+        </div>
+        <div class="editor-field">
+            @Html.TextBoxFor(model => model.LastName)
+            @Html.ValidationMessageFor(model => model.LastName)
+        </div>
+
+        <div class="editor-label">
+            <b>Street Address</b>
+        </div>
+        <div class="editor-field">
+            @Html.TextBoxFor(model => model.StreetAddress)
+            @Html.ValidationMessageFor(model => model.StreetAddress)
+        </div>
+
+        <div class="editor-label">
+            <b>City</b>
+        </div>
+        <div class="editor-field">
+            @Html.TextBoxFor(model => model.City)
+            @Html.ValidationMessageFor(model => model.City)
+        </div>
+
+        <div class="editor-label">
+            <b>State</b>
+        </div>
+        <div class="editor-field">
+            @Html.TextBoxFor(model => model.State)
+            @Html.ValidationMessageFor(model => model.State)
+        </div>
+
+        <div class="editor-label">
+            <b>Zip Code</b>
+        </div>
+        <div class="editor-field">
+            @Html.TextBoxFor(model => model.Zip)
+            @Html.ValidationMessageFor(model => model.Zip)
+        </div>
+
+        <div class="editor-label">
+            <b>Phone</b>
+        </div>
+        <div class="editor-field">
+            @Html.TextBoxFor(model => model.Phone)
+            @Html.ValidationMessageFor(model => model.Phone)
+        </div>
+
+        <div class="editor-label">
+            <b>Email *</b>
+        </div>
+        <div class="editor-field">
+            @Html.TextBoxFor(model => model.Email)
+            @Html.ValidationMessageFor(model => model.Email)
+        </div>
+
+        <p>
+            <input type="submit" value="Create" />
+        </p>
+    </fieldset>
+ }
+}
+
+
+
+

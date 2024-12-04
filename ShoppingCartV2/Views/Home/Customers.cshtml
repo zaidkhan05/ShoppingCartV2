@@ -1,0 +1,52 @@
+@inherits WebViewPage<IEnumerable<ShoppingCartV2.Models.CustomerWithPurchase>>
+
+<h2>@Html.Raw(ViewBag.Message)</h2>
+
+<table>
+    <tr>
+        <td></td>
+        <td style="text-align: center; padding: 4px">
+            @Html.ActionLink("ID", "Customers", new { sortOrder = @ViewBag.IDSortParm }, new {style="text-decoration:none; font-weight: bold;"})
+        </td>
+        <td style="text-align: center; padding: 4px">
+            @Html.ActionLink("Last Name", "Customers", new { sortOrder = @ViewBag.LastNameSortParm }, new {style="text-decoration:none; font-weight: bold;"})
+        </td>
+        <td style="text-align: center; padding: 4px">
+            @Html.ActionLink("First Name", "Customers", new { sortOrder = @ViewBag.FirstNameSortParm }, new {style="text-decoration:none; font-weight: bold;"})
+        </td>
+        <td style="text-align: center; padding: 4px">
+            @Html.ActionLink("Order Amount", "Customers", new { sortOrder = @ViewBag.AmountSortParm }, new {style="text-decoration:none; font-weight: bold;"})
+        </td>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+
+        <tr>
+            <td>
+                @Html.ActionLink("Edit", "EditCustomer", new { id = item.ID }) |
+                @Html.ActionLink("Details", "CustomerDetails", new { id = item.ID })
+            </td>
+            <td>
+                @item.ID
+            </td>
+            <td>
+                @item.LastName
+            </td>
+            <td>
+                @item.FirstName
+            </td>
+            <td>
+                @Html.ActionLink(item.TotalPrice.ToString(), "OrderDetails", new { id = item.OrderID })
+            </td>
+        </tr>
+
+    }
+
+</table>
+
+<p>
+    <h3>
+        @Html.ActionLink("Back To Admin View", "Admin")
+    </h3>
+</p>

@@ -1,0 +1,40 @@
+@model ShoppingCartV2.Models.Intersection
+
+<h2>@Html.Raw(ViewBag.Message)</h2>
+<p></p>
+@{ using (Html.BeginForm()) {
+    @Html.Hidden("ProductID",Model.ProductID);
+    @Html.Hidden("OptionID",Model.OptionID);
+
+    <style type="text/css">
+        .display-label {
+            font-size: 16px;
+            font-weight: bold;
+        }
+        .fielddiplay {
+            font-size: 16px;
+            font-weight: bold;
+            color: #0000ff;
+        }
+    </style>
+    <fieldset>
+        <legend>Fields</legend>
+
+        <div class="display-label">Product ID:</div>
+        <div class="fielddiplay">@Model.ProductID</div>
+        <p></p>
+        <div class="display-label">Option ID:</div>
+        <div class="fielddiplay">@Model.OptionID</div>
+
+        <p>
+            <input type="submit" value="Delete" />
+        </p>
+    </fieldset>
+    }
+}
+<p>
+    <h3>
+        @Html.ActionLink("Back To Intersections View", "Intersections") |
+        @Html.ActionLink("Back To Admin View", "Admin")
+    </h3>
+</p>

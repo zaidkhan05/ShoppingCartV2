@@ -1,0 +1,9 @@
+﻿
+<h2>@Html.Raw(ViewBag.Message)</h2>
+
+@Html.Raw(ViewBag.Message2)
+
+@if ((Boolean)ViewBag.HasItems)
+{
+    <h2>@Html.ActionLink("Proceed with Check Out", "ShoppingCartAccount")</h2>
+}

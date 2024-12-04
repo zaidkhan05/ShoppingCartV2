@@ -1,0 +1,54 @@
+@model ShoppingCartV2.Models.Product
+
+<h2>@Html.Raw(ViewBag.Message)</h2>
+<p></p>
+@{ using (Html.BeginForm()) {
+    @Html.Hidden("ProductID", Model.ProductID);
+
+    <style type="text/css">
+        .display-label {
+            font-size: 16px;
+            font-weight: bold;
+        }
+        .fielddiplay {
+            font-size: 16px;
+            font-weight: bold;
+            color: #0000ff;
+        }
+    </style>
+    <fieldset>
+        <legend>Fields</legend>
+
+        <div class="display-label">Product ID:</div>
+        <div class="fielddiplay">@Model.ProductID</div>
+        <p></p>
+        <div class="display-label">Product Tab:</div>
+        <div class="fielddiplay">@Model.ProductTab</div>
+        <p></p>
+        <div class="display-label">Product Name:</div>
+        <div class="fielddiplay">@Model.ProductName</div>
+        <p></p>
+        <div class="display-label">Image File:</div>
+        <div class="fielddiplay">@Model.ImageFile</div>
+        <p></p>
+        <div class="display-label">Unit Price:</div>
+        <div class="fielddiplay">@String.Format("{0:F}", Model.UnitPrice)</div>
+        <p></p>
+        <div class="display-label">Maximum Amount:</div>
+        <div class="fielddiplay">@Model.MaxAmount</div>
+        <p></p>
+        <div class="display-label">Default Amount:</div>
+        <div class="fielddiplay">@Model.DefaultAmount</div>
+
+        <p>
+            <input type="submit" value="Delete" />
+        </p>
+    </fieldset>
+   }
+}
+<p>
+    <h3>
+        @Html.ActionLink("Back To Products View", "Products") |
+        @Html.ActionLink("Back To Admin View", "Admin")
+    </h3>
+</p>

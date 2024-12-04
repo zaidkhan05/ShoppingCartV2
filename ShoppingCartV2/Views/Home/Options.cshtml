@@ -1,0 +1,48 @@
+@inherits WebViewPage<IEnumerable<ShoppingCartV2.Models.Option>>
+
+<h2>@Html.Raw(ViewBag.Message)</h2>
+
+<table>
+    <tr>
+        <td></td>
+        <td style="text-align: center; padding: 4px">
+            @Html.ActionLink("Option ID", "Options", new { sortOrder = ViewBag.IDSortParm }, new {style="text-decoration:none; font-weight: bold;"})
+        </td>
+        <td style="text-align: center; padding: 4px">
+            @Html.ActionLink("Option Type", "Options", new { sortOrder = ViewBag.TypeSortParm }, new {style="text-decoration:none; font-weight: bold;"})
+        </td>
+        <td style="text-align: center; padding: 4px">
+            @Html.ActionLink("Option Name", "Options", new { sortOrder = ViewBag.NameSortParm }, new {style="text-decoration:none; font-weight: bold;"})
+        </td>
+        <td style="text-align: center; padding: 4px">
+            @Html.ActionLink("Option Cost", "Options", new { sortOrder = ViewBag.PriceSortParm }, new {style="text-decoration:none; font-weight: bold;"})
+        </td>
+    </tr>
+
+    @foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.ActionLink("Edit", "EditOption", new { id=item.OptionID }) |
+                @Html.ActionLink("Details", "OptionDetails", new { id=item.OptionID }) |
+                @Html.ActionLink("Delete", "DeleteOption", new { id=item.OptionID })
+            </td>
+            <td>
+                @item.OptionID
+            </td>
+            <td>
+                @item.OptionType
+            </td>
+            <td>
+                @item.OptionName
+            </td>
+            <td>
+                @String.Format("{0:C}", item.OptionCost)
+            </td>
+        </tr>
+    }
+
+</table>
+
+<p>
+    <h3>@Html.ActionLink("Back To Admin View", "Admin")</h3>
+</p>

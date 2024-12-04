@@ -1,0 +1,70 @@
+@inherits WebViewPage<IEnumerable<ShoppingCartV2.Models.Product>>
+
+<h2>@Html.Raw(ViewBag.Message)</h2>
+
+<br />
+<p>
+    @Html.ActionLink("Create New Product", "CreateProduct", null, new { style = "font-weight: bold;" })
+</p>
+<table>
+    <tr>
+        <td></td>
+        <td style="text-align: center; padding: 4px">
+            @Html.ActionLink("Product ID", "Products", new { sortOrder = ViewData["IDSortParm"] }, new { style = "text-decoration:none; font-weight: bold;" })
+        </td>
+        <td style="text-align: center; padding: 4px">
+            @Html.ActionLink("Product Tab", "Products", new { sortOrder = ViewData["TabSortParm"] }, new { style = "text-decoration:none; font-weight: bold;" })
+        </td>
+        <td style="text-align: center; padding: 4px">
+            @Html.ActionLink("Product Name", "Products", new { sortOrder = ViewData["NameSortParm"] }, new { style = "text-decoration:none; font-weight: bold;" })
+        </td>
+        <td style="text-align: center; padding: 4px">
+            @Html.ActionLink("Image File", "Products", new { sortOrder = ViewData["ImageSortParm"] }, new { style = "text-decoration:none; font-weight: bold;" })
+        </td>
+        <td style="text-align: center; padding: 4px">
+            @Html.ActionLink("Unit Price", "Products", new { sortOrder = ViewData["PriceSortParm"] }, new { style = "text-decoration:none; font-weight: bold;" })
+        </td>
+        <td style="text-align: center; padding: 4px">
+            Maximum Amount
+        </td>
+        <td style="text-align: center; padding: 4px">
+            Default Amount
+        </td>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.ActionLink("Edit", "EditProduct", new { id = item.ProductID }) |
+                @Html.ActionLink("Details", "ProductDetails", new { id = item.ProductID }) |
+                @Html.ActionLink("Delete", "DeleteProduct", new { id = item.ProductID })
+            </td>
+            <td>
+                @item.ProductID
+            </td>
+            <td>
+                @item.ProductTab
+            </td>
+            <td>
+                @item.ProductName
+            </td>
+            <td>
+                @item.ImageFile
+            </td>
+            <td>
+                @String.Format("{0:F}", item.UnitPrice)
+            </td>
+            <td>
+                @item.MaxAmount
+            </td>
+            <td>
+                @item.DefaultAmount
+            </td>
+        </tr>
+    }
+</table>
+
+<p>
+    <h3>@Html.ActionLink("Back To Admin View", "Admin")</h3>
+</p>
